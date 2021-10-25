@@ -3,6 +3,7 @@ from dagster import repository
 from hello_cereal import hello_cereal_job
 from complex_job import diamond
 from configurable_job import configurable_job
+from scheduler import every_minute_schedule
 
 @repository
 def hello_cereal_repository():
@@ -13,6 +14,9 @@ def hello_cereal_repository():
         "jobs": {
             "hello_cereal_job": lambda: hello_cereal_job,
             "diamond": lambda: diamond,
-            "configurable_job": lambda: configurable_job,
+            "configurable_job": lambda: configurable_job
+        },
+        "schedules": {
+            "every_minute_schedule": lambda: every_minute_schedule
         }
     }
